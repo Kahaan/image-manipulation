@@ -82,10 +82,19 @@ def encode(bits, text)
 end
 
 
+def decode_message(bits, text)
+  # check the length of the text in bits
+  # create a result array,
+  # shovel rgb vals from bits until results length is length of text in binary
 
-# num bits  = 0 => 3
+  length_of_text = text_to_binary(text).length
+  results = []
 
+    while results.length <= length_of_text
+      
+    end
 
+end
 
 
 encode(bits, "abc")
@@ -93,10 +102,6 @@ encode(bits, "abc")
 
 
 
-
-
-
-# puts bits[0][0][-1]
 
 # Each pixel is made up of 4 bytes (R,G,B,A), each of which are made up of 8 bits
 # in bits, each sub array is one pixel, or 4 bytes
