@@ -39,32 +39,46 @@ def encode(bits, text)
   message_in_bits = text_to_binary(text)
 
   i = 0
+  j = 0
+
+  # puts message_in_bits.length
+  # puts "#{message_in_bits}:"
 
   while  i <= message_in_bits.length
-# what if the number of bits in message is less than, greater than 3, it won't add the entire message
+
 
     mask_r_val = message_in_bits[i]
     mask_g_val = message_in_bits[i + 1]
     mask_b_val = message_in_bits[i + 2]
 
 # incase mask val is nil it won't modify it
-    bits[i][0][-1] = mask_r_val || bits[i][0][-1]
-    bits[i][1][-1] = mask_g_val || bits[i][1][-1]
-    bits[i][2][-1] = mask_b_val || bits[i][2][-1]
+    bits[j][0][-1] = mask_r_val || bits[i][0][-1]
+    bits[j][1][-1] = mask_g_val || bits[i][1][-1]
+    bits[j][2][-1] = mask_b_val || bits[i][2][-1]
 
-    # bits[i][0][-1] = message_in_bits[i]
+    # print bits[j][0][-1]
+    # print bits[j][1][-1]
+    # print bits[j][2][-1]
 
     i += 3
+    j += 1
   end
 
-  if i % 3 == 2
-    bits[i - 2][0][-1] = message_in_bits[-1]
-  elsif i % 3 == 1
-    bits[i - 1][0][-1] = message_in_bits[-2]
-    bits[i - 1][1][-1] = message_in_bits[-1]
-  end
-  puts message_in_bits
-  print [message_in_bits[i + 2], bits[i][2]]
+
+
+
+
+
+  # what if the number of bits in message is less than, greater than 3, it won't add the entire message
+  # if i % 3 == 2
+  #   print "entered 3"
+  #   bits[i - 2][0][-1] = message_in_bits[-1]
+  # elsif i % 3 == 1
+  #   print "entered 2"
+  #   bits[i - 1][0][-1] = message_in_bits[-2]
+  #   bits[i - 1][1][-1] = message_in_bits[-1]
+  # end
+
 end
 
 # num bits  = 4 => 1 means that two bits of the message still left
