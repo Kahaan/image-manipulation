@@ -18,6 +18,7 @@ bits = rgba_values.map do |pixel|
   pixel.map{|rgba| rgba.to_s(2)}
 end
 
+# print bits
 
 transparent = rgba_values.select do |pixel|
   pixel[-1] == 0
@@ -52,12 +53,25 @@ def encode(bits, text)
     bits[i][2][-1] = mask_b_val || bits[i][2][-1]
 
     # bits[i][0][-1] = message_in_bits[i]
-    print [message_in_bits[i + 2], bits[i][2]]
 
     i += 3
   end
 
+  if i % 3 == 2
+    bits[i - 2][0][-1] = message_in_bits[-1]
+  elsif i % 3 == 1
+    bits[i - 1][0][-1] = message_in_bits[-2]
+    bits[i - 1][1][-1] = message_in_bits[-1]
+  end
+  puts message_in_bits
+  print [message_in_bits[i + 2], bits[i][2]]
 end
+
+# num bits  = 4 => 1 means that two bits of the message still left
+# num bits  = 5 => 2 means that one bit of the message was left
+
+
+# num bits  = 0 => 3
 
 
 
