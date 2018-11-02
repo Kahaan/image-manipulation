@@ -38,6 +38,8 @@ end
 def encode(bits, text)
   message_in_bits = text_to_binary(text)
 
+  # What if text is empty string?
+
   i = 0
   j = 0
 
@@ -64,12 +66,10 @@ def encode(bits, text)
     j += 1
   end
 
-
-
-
-
-
   # what if the number of bits in message is less than, greater than 3, it won't add the entire message
+  # num bits  = 4 => 1 means that two bits of the message still left
+  # num bits  = 5 => 2 means that one bit of the message was left
+
   # if i % 3 == 2
   #   print "entered 3"
   #   bits[i - 2][0][-1] = message_in_bits[-1]
@@ -81,8 +81,6 @@ def encode(bits, text)
 
 end
 
-# num bits  = 4 => 1 means that two bits of the message still left
-# num bits  = 5 => 2 means that one bit of the message was left
 
 
 # num bits  = 0 => 3
