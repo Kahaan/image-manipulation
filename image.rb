@@ -8,18 +8,17 @@ image = ChunkyPNG::Image.from_file('PNG-image.png')
 
 color_values = image.pixels
 
-
+# turns color value to a nested array of rgba values eg [[255,0,0,255]]
 rgba_values = color_values.map do |colorval|
     ChunkyPNG::Color.to_truecolor_alpha_bytes(colorval)
 end
 
-
+# turns rgba values to binary
 bits = rgba_values.map do |pixel|
   pixel.map{|rgba| rgba.to_s(2)}
 end
 
-# print bits
-
+# Returns count of transparent pixels, not used soo far
 transparent = rgba_values.select do |pixel|
   pixel[-1] == 0
 end
@@ -102,7 +101,7 @@ def decode_message(bits, text)
     end
 
     message_in_binary = [results.join("")]
-
+    # puts text_to_binary(text)
     # puts message_in_binary
     puts binary_to_text(message_in_binary)
 
