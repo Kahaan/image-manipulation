@@ -90,14 +90,29 @@ def decode_message(bits, text)
   length_of_text = text_to_binary(text).length
   results = []
 
+    i = 0
     while results.length <= length_of_text
-      
+      r_val = bits[i][0][-1]
+      g_val = bits[i][1][-1]
+      b_val = bits[i][2][-1]
+
+      results << r_val << g_val << b_val
+
+      i += 1
     end
+
+    message_in_binary = [results.join("")]
+
+    # puts message_in_binary
+    puts binary_to_text(message_in_binary)
 
 end
 
 
-encode(bits, "abc")
+
+encode(bits, "send nudes")
+decode_message(bits, "send nudes")
+
 
 
 
