@@ -1,6 +1,6 @@
 require 'chunky_png'
 
-image = ChunkyPNG::Image.from_file('PNG-image.png')
+image = ChunkyPNG::Image.from_file('../PNG-image.png')
 
 # puts image[0,0]
 # color = ChunkyPNG::Color.to_hex(image[50,50])
