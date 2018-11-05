@@ -4,6 +4,7 @@ require_relative '../lib/image.rb'
 
 # CONVERSION TO BINARY:
 
+# Check image is in PNG format
 
 describe 'Conversion to binary' do
   subject(:image) {image = ChunkyPNG::Image.from_file('../PNG-image.png')}
@@ -17,7 +18,7 @@ describe 'Conversion to binary' do
   end
 
   it 'converts colorvals to nested arr of rgba' do
-    
+    expect(rgba_values).to all( be_a(Array))
   end
 
   it 'converts rgba to bits' do
