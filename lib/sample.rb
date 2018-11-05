@@ -30,12 +30,8 @@ class Image
 
     i = 0
     j = 0
-
     # puts "#{message_in_bits}:"
-    # print @bits
-
     while  i <= message_in_bits.length
-
 
       mask_r_val = message_in_bits[i]
       mask_g_val = message_in_bits[i + 1]
@@ -55,7 +51,6 @@ class Image
     return @bits
   end
 
-
   def decode_message(text)
 
     length_of_text = text_to_binary(text).length
@@ -74,7 +69,6 @@ class Image
 
       message_in_binary = [results[0...length_of_text].join("")]
       puts binary_to_text(message_in_binary)
-
   end
 
 end
