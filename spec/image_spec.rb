@@ -5,37 +5,30 @@ require_relative '../lib/sample.rb'
 # CONVERSION TO BINARY:
 
 # Check image is in PNG format
-
+# Check that the same bits object is being modified throughout
 describe Image do
-  subject(:image) {image = ChunkyPNG::Image.from_file('../PNG-image.png')}
+  # subject(:image) {image = ChunkyPNG::Image.from_file('../PNG-image.png')}
+  subject(:img) {Image.new}
 
   context '#initialize' do
     it 'loads image from file' do
-      expect(image.class).to eq(ChunkyPNG::Image)
+      expect(img.image.class).to eq(ChunkyPNG::Image)
     end
   end
 
   context '#img_to_binary' do
-    it 'extracts pixels into arr of colorvals' do
-      expect(image.pixels).to all( be_a(Fixnum))
-    end
-
-    it 'converts colorvals to nested arr of rgba' do
-      expect(rgba_values).to all( be_a(Array))
-    end
-
-    it 'converts rgba to bits' do
-
-    end
-
     it 'converts image to nested arr of string of binary' do
+      expect(img.bits.flatten).to all( be_a(String))
+    end
 
+    it 'converts image to binary' do
+      expect(img.bits.flatten.all?{|bit| bit == "1" || bit == "0"})
     end
   end
 
   context '#encoding' do
     it 'modifies image pixels after encoding' do
-
+      
     end
   end
 

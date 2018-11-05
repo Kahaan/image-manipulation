@@ -4,6 +4,7 @@ image = ChunkyPNG::Image.from_file('../PNG-image.png')
 
 
 class Image
+  attr_reader :image, :bits
 
   def initialize
     @image = ChunkyPNG::Image.from_file('../PNG-image.png')
