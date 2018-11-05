@@ -2,10 +2,6 @@ require 'chunky_png'
 
 image = ChunkyPNG::Image.from_file('../PNG-image.png')
 
-# puts image[0,0]
-# color = ChunkyPNG::Color.to_hex(image[50,50])
-#
-
 color_values = image.pixels
 
 # turns color value to a nested array of rgba values eg [[255,0,0,255]]
@@ -100,14 +96,14 @@ def decode_message(bits, text)
       i += 1
     end
 
-    message_in_binary = [results.join("")]
+    message_in_binary = [results[0...length_of_text].join("")]
     # puts text_to_binary(text)
     # puts message_in_binary
     puts binary_to_text(message_in_binary)
 
 end
-
-
+# print rgba_values
+# print bits
 
 encode(bits, "send nudes")
 decode_message(bits, "send nudes")
