@@ -105,8 +105,8 @@ end
 # print rgba_values
 # print bits
 
-encode(bits, "send nudes")
-decode_message(bits, "send nudes")
+# encode(bits, "send nudes")
+# decode_message(bits, "send nudes")
 
 
 

@@ -3,18 +3,21 @@ require 'rspec'
 require_relative '../lib/image.rb'
 
 # CONVERSION TO BINARY:
+
+
 describe 'Conversion to binary' do
+  subject(:image) {image = ChunkyPNG::Image.from_file('../PNG-image.png')}
 
   it 'loads image from file' do
-
+    expect(image.class).to eq(ChunkyPNG::Image)
   end
 
   it 'extracts pixels into arr of colorvals' do
-
+    expect(image.pixels).to all( be_a(Fixnum))
   end
 
   it 'converts colorvals to nested arr of rgba' do
-
+    
   end
 
   it 'converts rgba to bits' do
