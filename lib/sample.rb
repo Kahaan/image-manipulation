@@ -69,7 +69,7 @@ class Image
       end
 
       message_in_binary = [results[0...length_of_text].join("")]
-      puts binary_to_text(message_in_binary)
+      return binary_to_text(message_in_binary)
   end
 
 end

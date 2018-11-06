@@ -7,7 +7,7 @@ require_relative '../lib/sample.rb'
 # Check image is in PNG format
 # Check that the same bits object is being modified throughout
 describe Image do
-  # subject(:image) {image = ChunkyPNG::Image.from_file('../PNG-image.png')}
+
   subject(:img) {Image.new}
 
   context '#initialize' do
@@ -37,30 +37,9 @@ describe Image do
 
   context '#decoding' do
     it 'correctly returns recovered bits in text' do
-      
+      img.encode("abc")
+      expect(img.decode_message("abc")).to eq("abc")
     end
   end
 
 end
-
-  # check if image has loaded properly
-  # check that color_values returns an array of pixels
-  # check that rgba_values returns a nested array of rgba_values
-  # check bits turns rgba values into binary
-
-
-# Check that text file is being converted to binary and
-# returns a string, NOT array
-
-# Check that binary can be converted back to string
-
-# ENCODING:
-  # Check that text message is properly converted to binary
-  # Check that image has been modified after
-  # Check count of pixels modified to see if only the required
-  #   pixels were touched
-
-# DECODING:
-  # Check that the length of text in binary is the same
-  #   as the results
-  # Check the return value is the same as the input text
