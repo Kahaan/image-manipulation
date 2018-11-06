@@ -27,14 +27,17 @@ describe Image do
   end
 
   context '#encoding' do
+    let(:test_img) {Image.new}
     it 'modifies image pixels after encoding' do
-      
+      bits = img.encode("abc")
+      test_bits = test_img.bits
+      expect(bits).to_not eq(test_bits)
     end
   end
 
   context '#decoding' do
     it 'correctly returns recovered bits in text' do
-
+      
     end
   end
 
