@@ -33,6 +33,14 @@ describe Image do
       test_bits = test_img.bits
       expect(bits).to_not eq(test_bits)
     end
+
+    it 'works if the message is too short' do
+
+    end
+
+    it 'works if message is too long' do
+
+    end
   end
 
   context '#decoding' do
@@ -41,5 +49,7 @@ describe Image do
       expect(img.decode_message("abc")).to eq("abc")
     end
   end
+
+
 
 end
