@@ -34,12 +34,12 @@ describe Image do
       expect(bits).to_not eq(test_bits)
     end
 
-    it 'works if the message is too short' do
-
+    it 'raises error if the message is empty string' do
+      expect{test_img.encode("")}.to raise_error('text cannot be empty')
     end
 
-    it 'works if message is too long' do
-
+    it 'raises error if message is too long' do
+      
     end
   end
 

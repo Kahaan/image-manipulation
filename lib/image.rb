@@ -32,6 +32,7 @@ end
 
 
 def encode(bits, text)
+
   message_in_bits = text_to_binary(text)
 
   # What if text is empty string?

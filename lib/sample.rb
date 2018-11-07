@@ -27,6 +27,7 @@ class Image
 
 
   def encode(text)
+    raise "text cannot be empty" if text == ''
     message_in_bits = text_to_binary(text)
 
     i = 0
