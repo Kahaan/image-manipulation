@@ -54,7 +54,7 @@ class ImageManipulator
       i += 3
       j += 1
     end
-    return @copy.save("../encoded.png")
+    @copy.save("../encoded.png")
   end
 
   def decode_message(text)
