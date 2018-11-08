@@ -39,7 +39,8 @@ describe Image do
     end
 
     it 'raises error if message is too long' do
-      
+      max_bits = test_img.pixels * 3
+      expect(test_img.encode(""))
     end
   end
 
