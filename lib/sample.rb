@@ -3,17 +3,18 @@ require 'chunky_png'
 # image = ChunkyPNG::Image.from_file('../PNG-image.png')
 
 
-class Image
+class ImageManipulator
   attr_reader :image, :bits
 
   def initialize(image_path)
     @image_path = image_path
     @image = ChunkyPNG::Image.from_file(@image_path)
+    @copy = @image
     @bits = img_to_binary
   end
 
   def img_to_binary
-    color_values = @image.pixels
+    color_values = @copy.pixels
     rgba_values = color_values.map { |colorval| ChunkyPNG::Color.to_truecolor_alpha_bytes(colorval) }
     bits = rgba_values.map { |pixel| pixel.map{|rgba| rgba.to_s(2)} }
   end
@@ -53,7 +54,7 @@ class Image
       i += 3
       j += 1
     end
-    return @bits
+    return @copy.save("../encoded.png")
   end
 
   def decode_message(text)
@@ -79,7 +80,7 @@ class Image
 end
 
 
-img = Image.new('../PNG-image.png')
+img = ImageManipulator.new('../PNG-image.png')
 img.encode("send nudes")
 img.decode_message("send nudes")
 
