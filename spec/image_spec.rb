@@ -40,7 +40,8 @@ describe Image do
 
     it 'raises error if message is too long' do
       max_bits = test_img.pixels * 3
-      expect(test_img.encode(""))
+      # expect(test_img.encode(""))
+      # Not sure how to check length of argument in rspec :/
     end
   end
 

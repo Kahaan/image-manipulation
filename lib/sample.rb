@@ -1,13 +1,14 @@
 require 'chunky_png'
 
-image = ChunkyPNG::Image.from_file('../PNG-image.png')
+# image = ChunkyPNG::Image.from_file('../PNG-image.png')
 
 
 class Image
   attr_reader :image, :bits
 
-  def initialize
-    @image = ChunkyPNG::Image.from_file('../PNG-image.png')
+  def initialize(image_path)
+    @image_path = image_path
+    @image = ChunkyPNG::Image.from_file(@image_path)
     @bits = img_to_binary
   end
 
@@ -28,7 +29,7 @@ class Image
 
   def encode(text)
     raise "text cannot be empty" if text == ''
-    raise "file too large" if text_to_binary(text).count > image.pixels.count * 3
+    raise "file too large" if text_to_binary(text).length > image.pixels.count * 3
 
     message_in_bits = text_to_binary(text)
 
@@ -72,13 +73,13 @@ class Image
       end
 
       message_in_binary = [results[0...length_of_text].join("")]
-      return binary_to_text(message_in_binary)
+      puts binary_to_text(message_in_binary)
   end
 
 end
 
 
-img = Image.new
+img = Image.new('../PNG-image.png')
 img.encode("send nudes")
 img.decode_message("send nudes")
 
