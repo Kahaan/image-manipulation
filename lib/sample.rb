@@ -28,6 +28,8 @@ class Image
 
   def encode(text)
     raise "text cannot be empty" if text == ''
+    raise "file too large" if text_to_binary(text).count > image.pixels.count * 3
+
     message_in_bits = text_to_binary(text)
 
     i = 0
