@@ -11,6 +11,7 @@ class ImageManipulator
     @image = ChunkyPNG::Image.from_file(@image_path)
     @copy = @image
     @bits = img_to_binary(@copy)
+    # I'm initializing abc only to test the binary to image method
     @abc = binary_to_image(@bits)
   end
 
@@ -18,17 +19,20 @@ class ImageManipulator
     color_values = image.pixels
     rgba_values = color_values.map { |colorval| ChunkyPNG::Color.to_truecolor_alpha_bytes(colorval) }
     bits = rgba_values.map { |pixel| pixel.map{|rgba| rgba.to_s(2)} }
+    puts bits[0][0]
+    return bits
   end
 
   def binary_to_image(binary)
-# I'm modifying the bits of the image I read in but not reassembling the bits into a new encrypted image.
-# The goal is to add the number of bits to extract to the last r value of the pixel and extract the same number of bits and assemble the message
+
+    binary[0][0] = "00100101"
+    # I'm trying to modify a pixel, convert the binary to a canvas, convert back to binary and see if the pixel val has been changed
     rgba = binary.map { |pixel| pixel.map{|rgba| rgba.to_i(2)} }
-    canvas = ChunkyPNG::Canvas.from_rgba_stream(0,0,rgba)
-    # puts canvas
-    # encoded_image = canvas.to_image
+    rgba = rgba.join("")
+    canvas = ChunkyPNG::Canvas.from_rgba_stream(@image.width,@image.height,rgba)
+
     @copy.replace!(canvas)
-    # puts encoded_image
+
     @copy.save('../encoded_pic.png')
   end
 
