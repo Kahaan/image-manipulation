@@ -11,7 +11,7 @@ class ImageManipulator
     @image = ChunkyPNG::Image.from_file(@image_path)
     @copy = @image
     @bits = img_to_binary(@copy)
-    # @abc = binary_to_image(@bits)
+    @abc = binary_to_image(@bits)
   end
 
   def img_to_binary(image)
@@ -27,7 +27,7 @@ class ImageManipulator
     canvas = ChunkyPNG::Canvas.from_rgba_stream(200,200,rgba)
     # puts canvas
     encoded_image = canvas.to_image
-    # puts encoded_image.class
+    # puts encoded_image
     encoded_image.save('../encoded_pic.png')
   end
 
