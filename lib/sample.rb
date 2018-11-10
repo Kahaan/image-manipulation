@@ -24,11 +24,12 @@ class ImageManipulator
 # I'm modifying the bits of the image I read in but not reassembling the bits into a new encrypted image.
 # The goal is to add the number of bits to extract to the last r value of the pixel and extract the same number of bits and assemble the message
     rgba = binary.map { |pixel| pixel.map{|rgba| rgba.to_i(2)} }
-    canvas = ChunkyPNG::Canvas.from_rgba_stream(200,200,rgba)
+    canvas = ChunkyPNG::Canvas.from_rgba_stream(0,0,rgba)
     # puts canvas
-    encoded_image = canvas.to_image
+    # encoded_image = canvas.to_image
+    @copy.replace!(canvas)
     # puts encoded_image
-    encoded_image.save('../encoded_pic.png')
+    @copy.save('../encoded_pic.png')
   end
 
   def text_to_binary(text)
