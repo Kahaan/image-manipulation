@@ -36,6 +36,7 @@ class ImageManipulator
     puts back_to_binary = img_to_binary(img2)[0][0]
     # Why didn't the above line return "00100101" ?
     img2.save('../encoded_pic.png')
+    # canvas.save('../encoded_canvas_pic.png')
   end
 
   def text_to_binary(text)
