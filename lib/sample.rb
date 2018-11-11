@@ -35,7 +35,7 @@ class ImageManipulator
     # When I convert the image back to binary and then check the first pixel to see if it was modified, it isn't :/
     puts back_to_binary = img_to_binary(img2)[0][0]
     # Why didn't the above line return "00100101" ?
-    # img2.save('../encoded_pic.png')
+    img2.save('../encoded_pic.png')
     # canvas.save('../encoded_canvas_pic.png')
   end
 
