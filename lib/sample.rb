@@ -27,10 +27,16 @@ class ImageManipulator
     # modifying the first pixel to test
     binary[0][0] = "00100101"
     # I'm trying to modify a pixel, convert the binary to a canvas, canvas to image, then convert back to binary and see if the pixel val has been changed
-    rgba = binary.map { |pixel| pixel.map{|rgba| rgba.to_i(2)} }
+    rgba = binary.map { |pixel| pixel.map{|bin| bin.to_i(2)}}
+    color_vals = rgba.map{ |rgba| ChunkyPNG::Color.rgba(*rgba)}
+    # print color_vals.class
+    # rgba = binary.map { |pixel| Color.rgba(*pixel)} }
+
+    canvas = ChunkyPNG::Canvas.new(@image.width, @image.height, color_vals)
     # rgba is the stream being fed in, it has to be in string format per the documentation
-    rgba = rgba.join("")
-    canvas = ChunkyPNG::Canvas.from_rgba_stream(@image.width,@image.height,rgba)
+    # rgba = rgba.join("")
+    # canvas = ChunkyPNG::Canvas.from_rgba_stream(@image.width,@image.height,rgba)
+     # canvas = Canvas.new(@image.width, @image.height, Color.rgba())
     img2 = canvas.to_image
     # When I convert the image back to binary and then check the first pixel to see if it was modified, it isn't :/
     puts back_to_binary = img_to_binary(img2)[0][0]
