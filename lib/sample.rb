@@ -25,7 +25,7 @@ class ImageManipulator
 
   def binary_to_image(binary)
     # modifying the first pixel to test
-    binary[0][0] = "00100101"
+    binary[0][0] = "10100101"
     # I'm trying to modify a pixel, convert the binary to a canvas, canvas to image, then convert back to binary and see if the pixel val has been changed
     rgba = binary.map { |pixel| pixel.map{|bin| bin.to_i(2)}}
     color_vals = rgba.map{ |rgba| ChunkyPNG::Color.rgba(*rgba)}
