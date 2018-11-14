@@ -11,8 +11,6 @@ class ImageManipulator
     @image = ChunkyPNG::Image.from_file(@image_path)
     @copy = @image
     @bits = img_to_binary(@copy)
-    # I'm initializing abc only to test the binary to image method
-    @abc = binary_to_image(@bits)
   end
 
   def img_to_binary(image)
@@ -24,25 +22,11 @@ class ImageManipulator
   end
 
   def binary_to_image(binary)
-    # modifying the first pixel to test
-    binary[0][0] = "10100101"
-    # I'm trying to modify a pixel, convert the binary to a canvas, canvas to image, then convert back to binary and see if the pixel val has been changed
     rgba = binary.map { |pixel| pixel.map{|bin| bin.to_i(2)}}
     color_vals = rgba.map{ |rgba| ChunkyPNG::Color.rgba(*rgba)}
-    # print color_vals.class
-    # rgba = binary.map { |pixel| Color.rgba(*pixel)} }
-
     canvas = ChunkyPNG::Canvas.new(@image.width, @image.height, color_vals)
-    # rgba is the stream being fed in, it has to be in string format per the documentation
-    # rgba = rgba.join("")
-    # canvas = ChunkyPNG::Canvas.from_rgba_stream(@image.width,@image.height,rgba)
-     # canvas = Canvas.new(@image.width, @image.height, Color.rgba())
-    img2 = canvas.to_image
-    # When I convert the image back to binary and then check the first pixel to see if it was modified, it isn't :/
-    puts back_to_binary = img_to_binary(img2)[0][0]
-    # Why didn't the above line return "00100101" ?
-    img2.save('../encoded_pic.png')
-    # canvas.save('../encoded_canvas_pic.png')
+    encoded_img = canvas.to_image
+    encoded_img.save('../encoded_pic.png')
   end
 
   def text_to_binary(text)
