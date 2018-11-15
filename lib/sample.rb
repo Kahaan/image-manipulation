@@ -67,7 +67,7 @@ class ImageManipulator
       count += 3
     end
 # What if the count of bits edited is greater than 255?
-    # @bits[-1][0] = count.to_s(2)
+    @bits[-1][0] = count.to_s(2)
     # print binary_to_image(@bits)
 
 
