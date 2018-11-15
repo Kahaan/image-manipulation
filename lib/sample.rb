@@ -67,7 +67,7 @@ class ImageManipulator
       count += 3
     end
 # What if the count of bits edited is greater than 255?
-    @bits[-1][0] = count.to_s(2)
+    # @bits[-1][0] = count.to_s(2)
     # print binary_to_image(@bits)
 
 
@@ -77,8 +77,8 @@ class ImageManipulator
 
   def decode_message(encoded_image_path="../encoded_pic.png")
     encoded_image = ChunkyPNG::Image.from_file(encoded_image_path)
-    encoded_bits = img_to_binary(encoded_image)
-    puts length_of_text = encoded_bits[-1]
+    num_encoded_bits = img_to_binary(encoded_image)
+    puts length_of_text = num_encoded_bits[-1]
     # length_of_text = text_to_binary(text).length
     results = []
 
