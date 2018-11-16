@@ -79,6 +79,14 @@ class ImageManipulator
   # a function to calculate the number of pixels required to mask the message. Since if the message
   # is > 255 we can't add it to one rgba value
 
+  def num_bits_to_extract()
+    # the problem right now is that with any large-ish file the number of bits to recover will be several thousand
+    # if I just encode the number of bits to recover in the last pixel that won't work because any number greater than 255
+    # will need more than one r val. if I just keep using rgba vals from the end, how do I know when to stop extracting?
+    
+
+  end
+
   def decode_message(encoded_image_path="../encoded_pic.png")
     encoded_image = ChunkyPNG::Image.from_file(encoded_image_path)
     encoded_bits = img_to_binary(encoded_image)
