@@ -67,7 +67,8 @@ class ImageManipulator
       count += 3
     end
 # What if the count of bits edited is greater than 255?
-    # @bits[-1][0] = count.to_s(2)
+    @bits[-1][0] = count.to_s(2)
+    binary_to_image(@bits)
     # print binary_to_image(@bits)
 
 
@@ -75,10 +76,13 @@ class ImageManipulator
     # @bits.save(File.open("../encoded_pic.png", 'w+'))
   end
 
+  # a function to calculate the number of pixels required to mask the message. Since if the message
+  # is > 255 we can't add it to one rgba value
+
   def decode_message(encoded_image_path="../encoded_pic.png")
     encoded_image = ChunkyPNG::Image.from_file(encoded_image_path)
-    num_encoded_bits = img_to_binary(encoded_image)
-    puts length_of_text = num_encoded_bits[-1]
+    encoded_bits = img_to_binary(encoded_image)
+    puts length_of_text = encoded_bits[-1][0].to_i(2)
     # length_of_text = text_to_binary(text).length
     results = []
 
@@ -102,6 +106,8 @@ end
 
 
 img = ImageManipulator.new('../PNG-image.png')
+img.encode("send nudes to me abc abc abc ab")
+img.decode_message
 # puts binary_to_image(img.bits)
 # img.encode("send nudes")
 # img.decode_message("../encoded_pic.png")
