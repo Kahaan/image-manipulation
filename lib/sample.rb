@@ -88,7 +88,7 @@ class ImageManipulator
     # will need more than one r val. if I just keep using rgba vals from the end, how do I know when to stop extracting?
     # What if I stored the end idx to stop extracting? (the idx of the last val)
     # What if I limited the length of the message a user can encrypt to 140 character?
-      # The max bits per character is 7, therefore 7bits * 140 chars = 2223 max bits to extract
+      # The max bits per character is 7, therefore 7bits * 140 chars / 8bits per byte = 2223 max bytes to extract
       # if I have a way of cutting out all question marks from the output, I could return the exact message
       # this could also apply to the regular way, I wouldn't need to limit to 140 chars if I can find the ??
 
