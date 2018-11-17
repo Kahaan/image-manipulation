@@ -83,6 +83,7 @@ class ImageManipulator
     # the problem right now is that with any large-ish file the number of bits to recover will be several thousand
     # if I just encode the number of bits to recover in the last pixel that won't work because any number greater than 255
     # will need more than one r val. if I just keep using rgba vals from the end, how do I know when to stop extracting?
+    # What if I stored the end idx to stop extracting? (the idx of the last val)
     
 
   end
