@@ -96,25 +96,7 @@ class ImageManipulator
 
 end
 
+# img = ImageManipulator.new('../PNG-image.png')
+img = ImageManipulator.new('../IronMonkey.png')
 
-img = ImageManipulator.new('../PNG-image.png')
-img.encode("it fucking works!")
 img.decode_message
-# puts binary_to_image(img.bits)
-# img.encode("send nudes")
-# img.decode_message("../encoded_pic.png")
-
-
-
-
-
-
-# Each pixel is made up of 4 bytes (R,G,B,A), each of which are made up of 8 bits
-# in bits, each sub array is one pixel, or 4 bytes
-# so if we only edited the first byte's least significant bit, we would be able to fit a file which had
-# the same number of bits as there are pixels or a file 1/4th the size
-# bits[0] => The first level deep in bits is a single pixel in the form of an array
-# bits[0][0] => the second level is the r values stored as strings
-# bits[0][0][-1] => the next level deep is the actualy binary
-# to start, only focus on the r values this way you don't have to keep track of the location of each modified pixel
-# bits[0]
