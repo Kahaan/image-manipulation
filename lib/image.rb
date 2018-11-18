@@ -120,14 +120,6 @@ class ImageManipulator
 end
 
 
-img = ImageManipulator.new('../PNG-image.png')
-img.encode("send nudes to me abc abc abc ab")
-img.decode_message
-# puts binary_to_image(img.bits)
-# img.encode("send nudes")
-# img.decode_message("../encoded_pic.png")
-
-
 
 
 
