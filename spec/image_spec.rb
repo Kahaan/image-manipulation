@@ -6,14 +6,19 @@ require_relative '../lib/image.rb'
 
 # Check image is in PNG format
 # Check that the same bits object is being modified throughout
-describe Image do
+describe ImageManipulator do
 
-  subject(:img) {Image.new}
+  subject(:img) {ImageManipulator.new('../IronMonkey.png')}
 
   context '#initialize' do
     it 'loads image from file' do
       expect(img.image.class).to eq(ChunkyPNG::Image)
     end
+
+    it 'Raises error if img isn\'t png format' do
+      expect(@image_path[-3..-1]).to eq('png')
+    end
+
   end
 
   context '#img_to_binary' do
@@ -27,7 +32,7 @@ describe Image do
   end
 
   context '#encoding' do
-    let(:test_img) {Image.new}
+    let(:test_img) {ImageManipulator.new}
     it 'modifies image pixels after encoding' do
       bits = img.encode("abc")
       test_bits = test_img.bits
