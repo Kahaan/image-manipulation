@@ -1,6 +1,6 @@
 
 require 'rspec'
-require_relative '../lib/sample.rb'
+require_relative '../lib/image.rb'
 
 # CONVERSION TO BINARY:
 
