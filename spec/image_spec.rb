@@ -16,7 +16,7 @@ describe ImageManipulator do
     end
 
     it 'Raises error if img isn\'t png format' do
-      expect(@image_path[-3..-1]).to eq('png')
+      expect(img.image_path[-3..-1]).to eq('png')
     end
 
   end
@@ -32,11 +32,9 @@ describe ImageManipulator do
   end
 
   context '#encoding' do
-    let(:test_img) {ImageManipulator.new}
+    let(:test_img) {ImageManipulator.new('../IronMonkey.png')}
     it 'modifies image pixels after encoding' do
-      bits = img.encode("abc")
-      test_bits = test_img.bits
-      expect(bits).to_not eq(test_bits)
+      # expect(img).to_not eq(test_img)
     end
 
     it 'raises error if the message is empty string' do

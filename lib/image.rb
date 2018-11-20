@@ -2,7 +2,7 @@ require 'chunky_png'
 
 
 class ImageManipulator
-  attr_reader :image, :bits
+  attr_reader :image, :bits, :image_path
 
   def initialize(image_path)
     # create error if the image_path isnt for a png file
