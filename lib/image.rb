@@ -8,6 +8,7 @@ class ImageManipulator
     # create error if the image_path isnt for a png file
     # crete error if the image_path is blank
     # create error if no image is found at the path
+    # create an error if the picutre being decoded doesn't have a message
     @image_path = image_path
     @image = ChunkyPNG::Image.from_file(@image_path)
     @copy = @image
@@ -21,12 +22,12 @@ class ImageManipulator
     return bits
   end
 
-  def binary_to_image(binary)
+  def binary_to_image(binary, path='../encoded_pic.png')
     rgba = binary.map { |pixel| pixel.map{|bin| bin.to_i(2)}}
     color_vals = rgba.map{ |rgba| ChunkyPNG::Color.rgba(*rgba)}
     canvas = ChunkyPNG::Canvas.new(@image.width, @image.height, color_vals)
     encoded_img = canvas.to_image
-    encoded_img.save('../encoded_pic.png')
+    encoded_img.save(path)
   end
 
   def text_to_binary(text)
@@ -38,7 +39,7 @@ class ImageManipulator
   end
 
 
-  def encode(text)
+  def encode(text, path='../encoded_pic.png')
     raise "text cannot be empty" if text == ''
     raise "file too large, enter shorter file or use larger image" if text_to_binary(text).length > image.pixels.count * 3
     text = "'#{text}'"
@@ -67,7 +68,7 @@ class ImageManipulator
       # count += 3
     end
 
-    binary_to_image(@bits)
+    binary_to_image(@bits, path)
   end
 
 
