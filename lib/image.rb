@@ -96,9 +96,3 @@ class ImageManipulator
   end
 
 end
-
-img = ImageManipulator.new('../IronMonkey.png')
-#
-img.encode("Old macdonald had a farm, E-I-E-I-O")
-#
-img.decode_message
