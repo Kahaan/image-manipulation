@@ -51,7 +51,7 @@ describe ImageManipulator do
   context '#decoding' do
     it 'correctly returns recovered bits in text' do
       img.encode("abc")
-      # expect(img.decode_message("abc")).to eq("abc")
+      expect(img.decode_message("abc")).to eq("abc")
     end
   end
 
