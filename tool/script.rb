@@ -3,6 +3,6 @@ require_relative '../lib/image.rb'
 
 img = ImageManipulator.new('../IronMonkey.png')
 #
-img.encode('Zaraif is a poo')
+img.encode('Career Karma ')
 
 # img.decode_message
